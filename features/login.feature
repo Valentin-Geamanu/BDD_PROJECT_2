@@ -14,14 +14,14 @@ Feature: Test the functionality of the login page
     Given I am on the login page
     When I insert " " email
     And I insert a password
-    And I click the login button
+    And I click on the login button
     Then Email error is displayed
     And Email error message contains " Please enter your email"
 
   Scenario: Check that "Wrong email" error message is displayed when user tries to login with invalid format email
     Given I am on the login page
-    When I insert an "invalid" email format
+    When I insert an "invalid" email
     And I insert a password
-    And I click the login button
+    And I click on the login button
     Then Email error is displayed
     And Email error message contains " Wrong email"

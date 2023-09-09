@@ -9,12 +9,14 @@ class LoginPage(BasePage):
     PASSWORD = (By.ID, "Password")
     LOGIN_BTN = (By.XPATH, '//button[@class="button-1 login-button"]')
     MAIN_ERROR = (By.XPATH, '//div[@class="message-error validation-summary-errors"]')
+    EMAIL_ERROR = (By.XPATH, '//*[@id="Email-error"]')
 
     def navigate_to_login_page(self):
         self.browser.get(self.LOGIN_PAGE_URL)
 
     def insert_email(self, email):
         self.insert(locator=self.EMAIL, text=email)
+        self.insert(locator=self.EMAIL, text="alpha")
 
     def insert_a_password(self):
         self.insert(locator=self.PASSWORD, text="password")
@@ -24,3 +26,9 @@ class LoginPage(BasePage):
 
     def main_error_is_displayed(self):
         assert self.is_displayed(locator=self.MAIN_ERROR)
+
+    def email_error(self):
+        assert self.is_displayed(locator=self.EMAIL_ERROR)
+
+    def email_error_message(self):
+        assert self.get_text(locator=self.EMAIL_ERROR)
